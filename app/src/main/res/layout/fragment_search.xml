@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/searchEditText"
+            android:hint="Restaurant/City/Pays"
+            android:inputType="textCapSentences"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/darker_gray"
+            android:imeOptions="actionSearch"
+            android:layout_weight="0.20" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageSearchTop"
+            android:src="@drawable/ic_recherche_recherche"
+            android:clickable="true"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

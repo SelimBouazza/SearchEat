@@ -28,49 +28,58 @@
             android:rowCount="2">
 
             <RelativeLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="changePage">
+                >
 
                 <Button
+                    android:tag="search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rechercher"
-                    android:id="@+id/button" />
+                    android:id="@+id/button"
+                    android:onClick="changePage"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="changePage">
+                >
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Proche"
-                    android:id="@+id/button2" />
+                    android:tag="geo"
+                    android:id="@+id/button2"
+                    android:onClick="changePage"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="changePage">
+               >
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Favoris"
+                    android:onClick="changePage"
+                    android:tag="fav"
                     android:id="@+id/button4" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="changePage">
+                >
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="changePage"
+                    android:tag="user"
                     android:text="Compte"
                     android:id="@+id/button3" />
             </RelativeLayout>

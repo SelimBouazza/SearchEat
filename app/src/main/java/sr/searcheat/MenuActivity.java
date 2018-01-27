@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,7 +13,7 @@ import android.widget.Toast;
 /**
  * Created by Sélim on 14/01/2018.
  */
-public class MenuActivity extends Activity {
+public class MenuActivity extends AppCompatActivity {
 
     private Profil profil;
     private TextView textLoginUser;
@@ -19,10 +21,16 @@ public class MenuActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+        isInternetConnected = Tools.isInternetConnected(this);
+
     }
 
     public void changePage(View view) {
+
+        Log.d("MyApp", "I am here");
         String tag = (String) view.getTag();
 
         Intent i = null;

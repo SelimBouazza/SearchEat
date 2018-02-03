@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
@@ -111,6 +112,22 @@ public class MainActivity extends AppCompatActivity{
         drawerLayout.setDrawerListener(drawerToggle);
     }
 
+    public void showRestaurantFragment(@NonNull RestaurantFragment fragment, @NonNull long id) {
+
+        if (id != 0 && id > 0) {
+            Bundle bundle = new Bundle();
+            bundle.putLong("id", id);
+           // fragment.setArguments(bundle);
+        }
+
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
+
+        fragmentTransaction.replace(R.id.content_frame, fragment, fragment.getClass().getSimpleName());
+        fragmentTransaction.addToBackStack(null);
+
+        fragmentTransaction.commit();
+    }
 
     private void putFragment(@NonNull Fragment fragment) {
 
@@ -182,6 +199,31 @@ public class MainActivity extends AppCompatActivity{
         } else {
             return true;
         }
+    }
+
+    public void setVisibilityMenu(final Boolean search, final Boolean resto, final Boolean share) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+
+                if (MainActivity.this.menu == null) {
+                    while (MainActivity.this.menu == null) {
+                    }
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+
+                MainActivity.this.menu.getItem(0).setVisible(search); // Search
+                MainActivity.this.menu.getItem(1).setVisible(resto); // Favorites
+                MainActivity.this.menu.getItem(2).setVisible(share); // Share
+
+                super.onPostExecute(aVoid);
+            }
+        }.execute();
     }
 
 }

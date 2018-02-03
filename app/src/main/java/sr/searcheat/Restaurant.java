@@ -11,13 +11,17 @@ public class Restaurant {
 
     private String adrRestaurant;
 
+    private double longitude;
+
+    private double latitude;
+
     private Restaurateur Restaurateur;
 
-    public Restaurant(String nomRestaurant, int idRestaurant, String adrRestaurant, Restaurateur Restaurateur) {
+    public Restaurant(int idRestaurant, String nomRestaurant, String adrRestaurant) {
         this.nomRestaurant = nomRestaurant;
         this.idRestaurant = idRestaurant;
         this.adrRestaurant = adrRestaurant;
-        this.Restaurateur = Restaurateur;
+
     }
 
     public String getAdrRestaurant() {
@@ -50,5 +54,21 @@ public class Restaurant {
 
     public void setIdRestaurant(int idRestaurant) {
         this.idRestaurant = idRestaurant;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 }

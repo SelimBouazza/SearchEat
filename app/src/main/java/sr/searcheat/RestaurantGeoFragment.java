@@ -181,7 +181,6 @@ public class RestaurantGeoFragment extends Fragment implements SwipeRefreshLayou
                         0);
 
             }
-            Log.i("coucou","édshj");
             Location l = locationManager.getLastKnownLocation(provider);
             if (l == null) {
                 continue;

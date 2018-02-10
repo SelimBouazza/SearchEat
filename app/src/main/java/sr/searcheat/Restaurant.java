@@ -1,5 +1,6 @@
 package sr.searcheat;
 
+
 /**
  * Created by Sélim on 14/01/2018.
  */
@@ -14,6 +15,8 @@ public class Restaurant {
     private double longitude;
 
     private double latitude;
+
+    private String phoneNumber;
 
     private Restaurateur Restaurateur;
 
@@ -70,5 +73,13 @@ public class Restaurant {
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

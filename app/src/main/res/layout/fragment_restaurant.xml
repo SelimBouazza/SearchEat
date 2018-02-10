@@ -3,4 +3,135 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <LinearLayout
+        android:id="@+id/restaurantView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <ImageView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/photoRestaurant"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ScrollView
+                android:id="@+id/restaurant_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/container_scrollable_restaurant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical"
+                    android:layout_alignParentStart="true">
+
+                    <View
+                        android:id="@+id/swipePager"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"/>
+
+                    <include
+                        android:id="@+id/layout_scroll"
+                        layout="@layout/restaurant_scroll"/>
+
+                </LinearLayout>
+
+            </ScrollView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:elevation="3dp"
+            android:id="@+id/bottomBloc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:background="@color/colorPrimary"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_height="fill_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageGps"
+                        android:layout_gravity="left"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_accueil_geolocalisation" />
+
+                    <TextView
+                        android:id="@+id/restaurantAdresse"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.35"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:textSize="28sp"
+                        style="@style/ScrollableTextView"
+                        android:gravity="left" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/restaurantName"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/ScrollableTextView"
+                    android:textSize="28sp"
+                    android:textColor="@android:color/black"
+                    android:background="@android:color/white"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:layout_weight="1">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/restaurantPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="0.5"
+                        android:textSize="28sp"
+                        android:textColor="@android:color/white"
+                        android:background="@color/colorPrimary" />
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+    
 </LinearLayout>

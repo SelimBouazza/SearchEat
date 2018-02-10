@@ -20,6 +20,7 @@ import android.view.*;
 import android.widget.ListView;
 
 import java.util.Arrays;
+import java.util.Set;
 
 
 public class MainActivity extends AppCompatActivity{
@@ -112,12 +113,24 @@ public class MainActivity extends AppCompatActivity{
         drawerLayout.setDrawerListener(drawerToggle);
     }
 
+    public void showSearchResult(@NonNull ResultSearchFragment fragment, @NonNull String search) {
+
+
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
+
+        fragmentTransaction.replace(R.id.content_frame, fragment, fragment.getClass().getSimpleName());
+        fragmentTransaction.addToBackStack(null);
+
+        fragmentTransaction.commit();
+    }
+
     public void showRestaurantFragment(@NonNull RestaurantFragment fragment, @NonNull long id) {
 
         if (id != 0 && id > 0) {
             Bundle bundle = new Bundle();
             bundle.putLong("id", id);
-           // fragment.setArguments(bundle);
+            fragment.setArguments(bundle);
         }
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();

@@ -1,16 +1,37 @@
 package sr.searcheat;
 
 
+import android.location.Address;
+import android.location.Geocoder;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import io.realm.Realm;
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by Sélim on 14/01/2018.
  */
-public class Restaurant {
+public class Restaurant  extends RealmObject{
 
+
+    @SerializedName("id_restaurant")  @PrimaryKey
     private int idRestaurant;
 
+    @SerializedName("nom_restaurant")
     private String nomRestaurant;
 
+    @SerializedName("adr_restaurant")
     private String adrRestaurant;
+
+    @SerializedName("id_restaurateur")
+    private int idRestaurateur;
 
     private double longitude;
 
@@ -18,12 +39,13 @@ public class Restaurant {
 
     private String phoneNumber;
 
-    private Restaurateur Restaurateur;
 
-    public Restaurant(int idRestaurant, String nomRestaurant, String adrRestaurant) {
-        this.nomRestaurant = nomRestaurant;
-        this.idRestaurant = idRestaurant;
-        this.adrRestaurant = adrRestaurant;
+
+    private RealmList<Plat> plats;
+
+    private String city;
+
+    public Restaurant(){
 
     }
 
@@ -35,12 +57,13 @@ public class Restaurant {
         this.adrRestaurant = adrRestaurant;
     }
 
-    public sr.searcheat.Restaurateur getRestaurateur() {
-        return Restaurateur;
+
+    public int getIdRestaurateur() {
+        return idRestaurateur;
     }
 
-    public void setRestaurateur(sr.searcheat.Restaurateur restaurateur) {
-        Restaurateur = restaurateur;
+    public void setIdRestaurateur(int idRestaurateur) {
+        this.idRestaurateur = idRestaurateur;
     }
 
     public String getNomRestaurant() {
@@ -81,5 +104,21 @@ public class Restaurant {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public RealmList<Plat> getPlats() {
+        return plats;
+    }
+
+    public void setPlats(RealmList<Plat> plats) {
+        this.plats = plats;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

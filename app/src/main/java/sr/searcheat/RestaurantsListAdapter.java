@@ -3,6 +3,7 @@ package sr.searcheat;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ public class RestaurantsListAdapter extends ArrayAdapter<Restaurant> {
     private Context context;
     private Location currentLocation;
 
-
+    private GeoTools.Position currentPosition = null;
     private boolean showDistance = true;
 
     public RestaurantsListAdapter(Context context, int resource, List<Restaurant> items, Location currentLocation) {
@@ -35,6 +36,13 @@ public class RestaurantsListAdapter extends ArrayAdapter<Restaurant> {
         this.resource = resource;
         this.context = context;
         this.currentLocation=currentLocation;
+    }
+
+    public RestaurantsListAdapter(Context context, int resource, List<Restaurant> items) {
+        super(context, resource, items);
+        this.items = items;
+        this.resource = resource;
+        this.context = context;
     }
 
     private static class ViewHolder {
@@ -80,10 +88,9 @@ public class RestaurantsListAdapter extends ArrayAdapter<Restaurant> {
 
        if (showDistance) {
 
-
             holder.RestaurantDistance.setVisibility(View.VISIBLE);
             holder.RestaurantDistance.setText(String.valueOf(Math.floor(GeoTools.distanceTo(currentLocation.getLatitude(), currentLocation.getLongitude(),
-                    item.getLatitude(), item.getLongitude())) + " km"));
+                    item.getLatitude(), item.getLongitude()))/ 1000) + " km");
         }else{
             holder.RestaurantDistance.setVisibility(View.GONE);
         }
@@ -94,7 +101,9 @@ public class RestaurantsListAdapter extends ArrayAdapter<Restaurant> {
         return rowView;
     }
 
-
+    public void setCurrentPosition(GeoTools.Position currentPosition) {
+        this.currentPosition = currentPosition;
+    }
 
     public void setShowDistance(boolean showDistance) {
         this.showDistance = showDistance;

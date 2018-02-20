@@ -46,9 +46,7 @@ public class Tools {
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setData(Uri.parse(number));
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
 
-        }
         context.startActivity(intent);
     }
 

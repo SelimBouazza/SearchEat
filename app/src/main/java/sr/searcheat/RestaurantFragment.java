@@ -30,6 +30,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import io.realm.Realm;
+
 /**
  * Created by Sélim on 14/01/2018.
  */
@@ -146,16 +148,12 @@ public class RestaurantFragment extends Fragment {
     }
 
     private void loadRestaurantFromDataBase(long id) {
-    /*    Realm realm = Realm.getInstance(context);
+      Realm realm = Realm.getInstance(context);
 
         restaurant = realm.where(Restaurant.class)
                 .equalTo("id", id)
-                .findFirst();*/
+                .findFirst();
 
-     restaurant = new Restaurant(1, "McDonald", "14 rue Edgar Faure 21000 Dijon");
-        restaurant.setPhoneNumber("0666666666");
-        restaurant.setLatitude(48.862725);
-        restaurant.setLongitude(2.287592);
 
         this.setData();
     }

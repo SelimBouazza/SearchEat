@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/restaurantMap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_height="30dp">
+
+
+        </LinearLayout>
+        
+        
+
+        <com.google.android.gms.maps.MapView
+            android:layout_marginBottom="10dp"
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            class="com.google.android.gms.maps.SupportMapFragment" />
+
+        <TextView
+            android:layout_marginBottom="10dp"
+            android:id="@+id/restaurantPresentation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center">
+
+            <GridLayout
+                android:id="@+id/servicesGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numColumns="4"
+                android:columnCount="4"
+                android:useDefaultMargins="true"
+                android:verticalSpacing="0dp"
+                android:horizontalSpacing="0dp"
+                android:stretchMode="columnWidth"
+                android:rowCount="4" />
+        </RelativeLayout>
+    </LinearLayout>
+    
+</LinearLayout>

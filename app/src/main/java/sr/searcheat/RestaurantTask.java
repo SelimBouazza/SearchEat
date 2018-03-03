@@ -47,17 +47,19 @@ public static class LoaderServerRestaurantTask   extends AsyncTask<Void, Restaur
             Realm realm = Realm.getInstance(context);
 
             realm.beginTransaction();
-
-          //  realm.clear(Plat.class);
+            realm.clear(Restaurateur.class);
+            realm.clear(Plat.class);
             realm.clear(Restaurant.class);
 
             realm.commitTransaction();
         }
 
         List<Restaurant> restaurants = null;
+        List<Restaurateur> restaurateurs = null;
 
                 try {
                     restaurants = GestionRestaurant.getInstance().getRestaurants();
+                    restaurateurs = GestionRestaurant.getInstance().getRestaurateur();
 
                     if (restaurants != null && restaurants.size() != 0) {
                         for (Restaurant restaurant : restaurants) {
@@ -70,6 +72,14 @@ public static class LoaderServerRestaurantTask   extends AsyncTask<Void, Restaur
                         }
 
                     }
+
+                 /*   if (restaurateurs != null && restaurateurs.size() != 0) {
+                        for (Restaurateur restaurateur : restaurateurs) {
+                            onProgressUpdate(restaurant);
+
+                        }
+
+                    }*/
                 } catch (Exception e) {
 
         }

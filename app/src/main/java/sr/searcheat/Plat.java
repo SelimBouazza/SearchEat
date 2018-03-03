@@ -1,5 +1,7 @@
 package sr.searcheat;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 import io.realm.RealmObject;
@@ -9,7 +11,9 @@ import io.realm.RealmObject;
  */
 public class Plat extends RealmObject {
 
+    @SerializedName("id_plat")
     private int idPlat;
+    @SerializedName("nom_plat")
     private String nomPlat;
 
 

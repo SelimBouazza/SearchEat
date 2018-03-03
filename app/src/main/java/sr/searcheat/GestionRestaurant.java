@@ -45,6 +45,11 @@ public class GestionRestaurant extends GestionManager {
         return super.getGson().fromJson(json, listType);
     }
 
+    public List<Restaurateur> getRestaurateur() throws Exception {
+        String json = super.bodyFromURL(super.getUrlBase() + "restauranteur.php");
+        return super.getGson().fromJson(json, listType);
+    }
+
 }
 
 

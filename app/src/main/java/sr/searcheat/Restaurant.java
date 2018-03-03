@@ -33,6 +33,17 @@ public class Restaurant  extends RealmObject{
     @SerializedName("id_restaurateur")
     private int idRestaurateur;
 
+    @SerializedName("phone_restaurant")
+    private String phoneRestaurant;
+
+    public String getPhoneRestaurant() {
+        return phoneRestaurant;
+    }
+
+    public void setPhoneRestaurant(String phoneRestaurant) {
+        this.phoneRestaurant = phoneRestaurant;
+    }
+
     private double longitude;
 
     private double latitude;

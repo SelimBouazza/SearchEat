@@ -40,12 +40,13 @@ public class RestaurantFragment extends Fragment {
     private View fragmentView;
     private Context context;
     private TextView restaurantAddresse;
-    private TextView restaurantPhone;
     private TextView restaurantName;
+    private TextView restaurantPhone;
     private Restaurant restaurant;
     private float heightPaddingTop = 0;
     private ImageView imageGps;
     private View swipePager;
+
 
 
     @Override
@@ -59,7 +60,6 @@ public class RestaurantFragment extends Fragment {
         imageGps = (ImageView) fragmentView.findViewById(R.id.imageGps);
         swipePager = fragmentView.findViewById(R.id.swipePager);
 
-
         this.prepareView();
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -71,7 +71,6 @@ public class RestaurantFragment extends Fragment {
 
             }
         }
-
 
         return fragmentView;
     }
@@ -94,10 +93,6 @@ public class RestaurantFragment extends Fragment {
                 }).create().show();
             }
         });
-
-
-
-
 
 
         imageGps.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +146,7 @@ public class RestaurantFragment extends Fragment {
       Realm realm = Realm.getInstance(context);
 
         restaurant = realm.where(Restaurant.class)
-                .equalTo("id", id)
+                .equalTo("idRestaurant", id)
                 .findFirst();
 
 
@@ -181,7 +176,7 @@ public class RestaurantFragment extends Fragment {
         restaurantName.setText(restaurant.getNomRestaurant());
         restaurantName.setSelected(true);
         restaurantAddresse.setText(restaurant.getAdrRestaurant());
-
+        restaurantPhone.setText(restaurant.getPhoneRestaurant());
         this.prepareMap();
     }
 

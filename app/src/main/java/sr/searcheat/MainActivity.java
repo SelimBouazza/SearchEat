@@ -126,11 +126,11 @@ public class MainActivity extends ActionBarActivity{
 
     public void showRestaurantFragment(@NonNull RestaurantFragment fragment, @NonNull long id) {
 
-        if (id != 0 && id > 0) {
+
             Bundle bundle = new Bundle();
             bundle.putLong("id", id);
             fragment.setArguments(bundle);
-        }
+
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);

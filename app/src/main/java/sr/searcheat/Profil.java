@@ -1,29 +1,29 @@
 package sr.searcheat;
 
 
+import com.google.gson.annotations.SerializedName;
+
+import io.realm.RealmObject;
+
 /**
  * Created by Sélim on 14/01/2018.
  */
-public class Profil {
+public class Profil extends RealmObject{
 
-
+    @SerializedName("Id_pers")
     private long id ;
 
-
+    @SerializedName("login")
     private String login;
 
-
+    @SerializedName("mdp")
     private String mdp;
 
-
+    @SerializedName("prenom")
     private String firstName;
 
-
-    private String country;
-
-
+    @SerializedName("nom")
     private String surname;
-
 
     private String email;
 
@@ -38,7 +38,6 @@ public class Profil {
         this.actived = actived;
         this.email = email;
         this.surname = surname;
-        this.country = country;
         this.firstName = firstName;
         this.mdp = mdp;
         this.login = login;
@@ -76,13 +75,6 @@ public class Profil {
         this.surname = surname;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
     public String getFirstName() {
         return firstName;

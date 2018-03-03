@@ -1,13 +1,19 @@
 package sr.searcheat;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
+
+import io.realm.RealmObject;
 
 /**
  * Created by Sélim on 21/01/2018.
  */
-public class Menu {
+public class Menu extends RealmObject{
 
+    @SerializedName("id_menu")
     private int idMenu;
+    @SerializedName("id_restaurant")
     private int idRestaurant;
     private ArrayList<Plat> Plats;
 

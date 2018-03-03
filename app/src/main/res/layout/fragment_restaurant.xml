@@ -15,12 +15,6 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5">
 
-            <ImageView
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/photoRestaurant"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
             <ScrollView
                 android:id="@+id/restaurant_scroll"
                 android:layout_width="match_parent"
@@ -42,7 +36,7 @@
 
                     <include
                         android:id="@+id/layout_scroll"
-                        layout="@layout/restaurant_scroll"/>
+                        layout="@layout/restaurant_scroll" />
 
                 </LinearLayout>
 
@@ -50,7 +44,6 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:elevation="3dp"
             android:id="@+id/bottomBloc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -68,6 +61,30 @@
                     android:orientation="horizontal"
                     android:layout_height="fill_parent">
 
+                    <TextView
+                        android:id="@+id/restaurantName"
+                        style="@style/ScrollableTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -83,30 +100,11 @@
                         android:layout_weight="0.35"
                         android:textStyle="bold"
                         android:textColor="@android:color/white"
+                        android:textAlignment="center"
                         android:textSize="28sp"
                         style="@style/ScrollableTextView"
                         android:gravity="left" />
 
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/restaurantName"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    style="@style/ScrollableTextView"
-                    android:textSize="28sp"
-                    android:textColor="@android:color/black"
-                    android:background="@android:color/white"
-                    android:layout_weight="1"
-                    android:gravity="center" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:background="@android:color/white"
-                    android:layout_weight="1">
 
                 </LinearLayout>
 
@@ -114,20 +112,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/restaurantPhone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
                         android:layout_weight="0.5"
-                        android:textSize="28sp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
                         android:textColor="@android:color/white"
-                        android:background="@color/colorPrimary" />
-
-
-
+                        android:textSize="28sp" />
                 </LinearLayout>
             </LinearLayout>
 

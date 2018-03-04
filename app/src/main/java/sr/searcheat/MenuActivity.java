@@ -30,7 +30,6 @@ public class MenuActivity extends ActionBarActivity {
 
     public void changePage(View view) {
 
-        Log.d("MyApp", "I am here");
         String tag = (String) view.getTag();
 
         Intent i = null;

@@ -26,6 +26,8 @@ public static class LoaderServerRestaurantTask   extends AsyncTask<Void, Restaur
     private SharedPreferences prefs;
 
 
+
+
     public LoaderServerRestaurantTask (SplashActivity splashActivity) {
         this.splashActivity = splashActivity;
         this.context = splashActivity;
@@ -47,41 +49,74 @@ public static class LoaderServerRestaurantTask   extends AsyncTask<Void, Restaur
             Realm realm = Realm.getInstance(context);
 
             realm.beginTransaction();
-            realm.clear(Restaurateur.class);
             realm.clear(Plat.class);
             realm.clear(Restaurant.class);
+            realm.clear(Ingredient.class);
+            realm.clear(Profil.class);
+            realm.clear(Restaurateur.class);
 
             realm.commitTransaction();
         }
-
         List<Restaurant> restaurants = null;
         List<Restaurateur> restaurateurs = null;
+        List<Ingredient> ingredients = null;
+        List<Plat> plats = null;
+        List<IngredientPlat> ingredientPlats = null;
+        List<Profil> profils = null;
 
-                try {
-                    restaurants = GestionRestaurant.getInstance().getRestaurants();
-                    restaurateurs = GestionRestaurant.getInstance().getRestaurateur();
+
+
+        try {
+            restaurants = GestionRestaurant.getInstance().getRestaurants();
+
+
+           plats = GestionRestaurant.getInstance().getPlat();
+            ingredientPlats = GestionRestaurant.getInstance().getIngredientPlat();
+            ingredients = GestionRestaurant.getInstance().getIngredient();
+            profils = GestionProfil.getInstance().getProfil();
+            restaurateurs = GestionRestaurant.getInstance().getRestaurateur();
+
+
 
                     if (restaurants != null && restaurants.size() != 0) {
                         for (Restaurant restaurant : restaurants) {
                             GeoTools.Position p = new GeoTools.Position();
-                            p= GeoTools.getLocationPosition(context,restaurant.getAdrRestaurant());
+                            p= GeoTools.getLocationPosition(context, restaurant.getAdrRestaurant());
                             restaurant.setLatitude(p.latitude);
                             restaurant.setLongitude(p.longitude);
-                            onProgressUpdate(restaurant);
 
+
+
+                            for(IngredientPlat ingredientPlat : ingredientPlats)
+                            {
+                                for(Ingredient ingredient : ingredients)
+                                {
+                                    for(Plat plat : plats)
+                                    {
+                                        if(ingredient.getId()==ingredientPlat.getId() && ingredientPlat.getId_plat()==plat.getIdPlat() && restaurant.getIdRestaurant()==plat.getIdRestaurant())
+                                        {
+                                            if(!plat.getIngredients().contains(ingredient))
+                                            plat.getIngredients().add(ingredient);
+                                            if(!restaurant.getPlats().contains(plat))
+                                            restaurant.getPlats().add(plat);
+
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+                            onProgressUpdate(restaurant);
                         }
 
                     }
 
-                 /*   if (restaurateurs != null && restaurateurs.size() != 0) {
-                        for (Restaurateur restaurateur : restaurateurs) {
-                            onProgressUpdate(restaurant);
 
-                        }
-
-                    }*/
                 } catch (Exception e) {
-
+                    Log.i("caca","ca");
+                    e.printStackTrace();
         }
         return restaurants;
     }
@@ -105,6 +140,8 @@ public static class LoaderServerRestaurantTask   extends AsyncTask<Void, Restaur
         super.onPostExecute(restaurants);
     }
 
+
+
 }
 
 
@@ -121,4 +158,12 @@ public static class LoaderServerRestaurantTask   extends AsyncTask<Void, Restaur
     }
 
 
-}
+
+    }
+
+
+
+
+
+
+

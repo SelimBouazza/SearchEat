@@ -46,8 +46,33 @@ public class GestionRestaurant extends GestionManager {
     }
 
     public List<Restaurateur> getRestaurateur() throws Exception {
-        String json = super.bodyFromURL(super.getUrlBase() + "restauranteur.php");
-        return super.getGson().fromJson(json, listType);
+        String json = super.bodyFromURL(super.getUrlBase() + "restaurateur.php");
+        Type type = new TypeToken<RealmList<Restaurateur>>() {
+        }.getType();
+        return super.getGson().fromJson(json, type);
+    }
+    public List<Ingredient> getIngredient() throws Exception {
+        String json = super.bodyFromURL(super.getUrlBase() + "ingredient.php");
+        Type type = new TypeToken<RealmList<Ingredient>>() {
+        }.getType();
+        return super.getGson().fromJson(json, type);
+    }
+
+    public List<Plat> getPlat() throws Exception {
+        String json = super.bodyFromURL(super.getUrlBase() + "plat.php");
+
+        Type type = new TypeToken<RealmList<Plat>>() {
+        }.getType();
+        return super.getGson().fromJson(json, type);
+    }
+
+
+
+    public List<IngredientPlat> getIngredientPlat() throws Exception {
+        String json = super.bodyFromURL(super.getUrlBase() + "ingredientPlat.php");
+        Type type = new TypeToken<RealmList<IngredientPlat>>() {
+        }.getType();
+        return super.getGson().fromJson(json, type);
     }
 
 }

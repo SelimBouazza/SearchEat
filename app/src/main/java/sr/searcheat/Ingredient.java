@@ -15,8 +15,9 @@ public class Ingredient extends RealmObject{
     @SerializedName("nom_ingredient")
     private String nom;
 
-    @SerializedName("id_restaurant")
-    private int idRestaurant;
+    public Ingredient() {
+
+    }
 
     public int getId() {
         return id;

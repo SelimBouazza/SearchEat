@@ -20,15 +20,18 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import io.realm.Realm;
 
@@ -46,6 +49,7 @@ public class RestaurantFragment extends Fragment {
     private float heightPaddingTop = 0;
     private ImageView imageGps;
     private View swipePager;
+    private GridLayout platsGrid;
 
 
 
@@ -59,6 +63,7 @@ public class RestaurantFragment extends Fragment {
         restaurantName=(TextView)fragmentView.findViewById(R.id.restaurantName);
         imageGps = (ImageView) fragmentView.findViewById(R.id.imageGps);
         swipePager = fragmentView.findViewById(R.id.swipePager);
+        platsGrid = (GridLayout)fragmentView.findViewById(R.id.platsGrid);
 
         this.prepareView();
         Bundle bundle = this.getArguments();
@@ -155,7 +160,6 @@ public class RestaurantFragment extends Fragment {
 
 
     private void prepareScrollView() {
-        // Get screen height (whithout status bar)
         Rect windowRect = new Rect();
         fragmentView.getWindowVisibleDisplayFrame(windowRect);
 
@@ -177,6 +181,27 @@ public class RestaurantFragment extends Fragment {
         restaurantName.setSelected(true);
         restaurantAddresse.setText(restaurant.getAdrRestaurant());
         restaurantPhone.setText(restaurant.getPhoneRestaurant());
+
+        for(final Plat plat : restaurant.getPlats())
+        {
+            final TextView textPlat = new TextView(context);
+            textPlat.setText(plat.getNomPlat());
+            textPlat.setTextSize(28);
+            textPlat.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    String s = "";
+                    for (Ingredient ingredient : plat.getIngredients()) {
+                        s += ingredient.getNom() + "\n";
+                    }
+                    Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+                platsGrid.addView(textPlat);
+        }
+
         this.prepareMap();
     }
 

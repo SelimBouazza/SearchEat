@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Sélim on 02/02/2018.
  */
-public class GeoTools {
+class GeoTools {
 
     private static final int EARTH_RADIUS = 6371;
 

@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 
 /**
@@ -15,6 +16,11 @@ public class Plat extends RealmObject {
     private int idPlat;
     @SerializedName("nom_plat")
     private String nomPlat;
+
+    @SerializedName("id_restaurant")
+    private int idRestaurant;
+
+    private RealmList<Ingredient> ingredients = new RealmList<>();
 
 
     public Plat(){
@@ -35,5 +41,21 @@ public class Plat extends RealmObject {
 
     public void setNomPlat(String nomPlat) {
         this.nomPlat = nomPlat;
+    }
+
+    public RealmList<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(RealmList<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public int getIdRestaurant() {
+        return idRestaurant;
+    }
+
+    public void setIdRestaurant(int idRestaurant) {
+        this.idRestaurant = idRestaurant;
     }
 }

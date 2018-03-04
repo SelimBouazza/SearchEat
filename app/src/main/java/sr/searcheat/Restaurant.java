@@ -36,13 +36,6 @@ public class Restaurant  extends RealmObject{
     @SerializedName("phone_restaurant")
     private String phoneRestaurant;
 
-    public String getPhoneRestaurant() {
-        return phoneRestaurant;
-    }
-
-    public void setPhoneRestaurant(String phoneRestaurant) {
-        this.phoneRestaurant = phoneRestaurant;
-    }
 
     private double longitude;
 
@@ -51,8 +44,8 @@ public class Restaurant  extends RealmObject{
     private String phoneNumber;
 
 
+    private RealmList<Plat> plats = new RealmList<>();
 
-    private RealmList<Plat> plats;
 
     private String city;
 
@@ -84,6 +77,7 @@ public class Restaurant  extends RealmObject{
     public void setNomRestaurant(String nomRestaurant) {
         this.nomRestaurant = nomRestaurant;
     }
+
 
     public int getIdRestaurant() {
         return idRestaurant;
@@ -131,5 +125,13 @@ public class Restaurant  extends RealmObject{
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getPhoneRestaurant() {
+        return phoneRestaurant;
+    }
+
+    public void setPhoneRestaurant(String phoneRestaurant) {
+        this.phoneRestaurant = phoneRestaurant;
     }
 }

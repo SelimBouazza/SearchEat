@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.*;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 
@@ -57,7 +58,6 @@ public class MainActivity extends ActionBarActivity{
         if (action != null) {
             switch (action) {
                 case "search":
-
                     putFragment(new SearchFragment());
                     break;
                 case "geo":
@@ -89,7 +89,7 @@ public class MainActivity extends ActionBarActivity{
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
 
-      //  drawerList.setAdapter(new DrawerAdapter(this, R.layout.drawer_list_item, Arrays.asList(menuItems)));
+    // drawerList.setAdapter(new DrawerAdapter(this, R.layout.drawer_list_item, Arrays.asList(menuItems)));
 
     //    drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -112,9 +112,10 @@ public class MainActivity extends ActionBarActivity{
         drawerLayout.setDrawerListener(drawerToggle);
     }
 
-    public void showSearchResult(@NonNull ResultSearchFragment fragment, @NonNull String search) {
+    public void showSearchResult(@NonNull ResultSearchFragment fragment, @NonNull String search,ArrayList<String> listIngredient) {
 
-
+        fragment.setSearchRequest(search);
+        fragment.setSearchIngredient(listIngredient);
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
 

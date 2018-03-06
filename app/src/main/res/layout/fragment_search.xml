@@ -20,7 +20,6 @@
             android:hint="Restaurant/City/Pays"
             android:inputType="textCapSentences"
             android:singleLine="true"
-            android:textColor="@android:color/white"
             android:textColorHint="@android:color/darker_gray"
             android:imeOptions="actionSearch"
             android:layout_weight="0.20" />
@@ -87,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lardons"
-            android:tag="lardon"
+            android:tag="lardons"
             android:id="@+id/checkBox"
             android:layout_row="0"
             android:layout_column="0"

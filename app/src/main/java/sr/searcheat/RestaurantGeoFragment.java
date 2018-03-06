@@ -61,31 +61,14 @@ public class RestaurantGeoFragment extends Fragment implements SwipeRefreshLayou
 
         swipeLayout = (SwipeRefreshLayout) fragmentView.findViewById(R.id.swipe_container);
         swipeLayout.setOnRefreshListener(this);
-
-        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-
-
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                int topRowVerticalPosition = (listView == null || listView.getChildCount() == 0) ?
-                        0 : listView.getChildAt(0).getTop();
-                swipeLayout.setEnabled(firstVisibleItem == 0 && topRowVerticalPosition >= 0);
-            }
-
-        });
-
+        prepareGeolocation();
+        loadrestaurants();
 
         return fragmentView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        new LoaderRestosGeo().execute();
-
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -94,14 +77,14 @@ public class RestaurantGeoFragment extends Fragment implements SwipeRefreshLayou
         getActivity().setTitle("Restaurant a proximité");
         ((MainActivity) getActivity()).setVisibilityMenu(true, false, false);
 
-        new LoaderRestosGeo().execute();
+
 
         super.onResume();
     }
 
     @Override
     public void onRefresh() {
-        new LoaderRestosGeo().execute();
+
     }
 
     @Override
@@ -180,41 +163,6 @@ public class RestaurantGeoFragment extends Fragment implements SwipeRefreshLayou
 
     }
 
-    private class LoaderRestosGeo extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPreExecute() {
-            if (!swipeLayout.isRefreshing())
-                swipeLayout.setRefreshing(true);
-
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-
-
-            while (currentLocation == null) {
-
-                prepareGeolocation();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-
-                loadrestaurants();
-
-            super.onPostExecute(aVoid);
-        }
-    }
 
 
 }

@@ -7,6 +7,7 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,20 +86,61 @@ public class ResultSearchFragment extends Fragment {
         final Realm realm = Realm.getInstance(context);
         RealmQuery query = realm.where(Restaurant.class);
         restoList = query.findAll();
+        RealmList<Plat> listPlats;
+
         for(Restaurant restaurant : restoList)
         {
-            if(restaurant.getNomRestaurant().contains(searchRequest))
+            listPlats=restaurant.getPlats();
+            if(!searchRequest.equals(""))
             {
-                resultRestaurant.add(restaurant);
-            }
+                if(restaurant.getNomRestaurant().contains(searchRequest))
+                {
 
-            else if(restaurant.getAdrRestaurant().contains(searchRequest))
-            {
-                resultRestaurant.add(restaurant);
+                    resultRestaurant.add(restaurant);
+                }
+
+                else if(restaurant.getAdrRestaurant().contains(searchRequest))
+                {
+
+                    resultRestaurant.add(restaurant);
+                }
             }
+           if(!searchIngredient.isEmpty())
+           {
+
+               for(int j=0;j<listPlats.size();j++)
+               {
+
+                       for(int z=0;z<listPlats.get(j).getIngredients().size();z++)
+                       {
+                           for(int i =0; i<searchIngredient.size();i++)
+                           {
+
+                           if(listPlats.get(j).getIngredients().get(z).getNom().contains(searchIngredient.get(i)))
+                           {
+
+                               resultRestaurant.add(restaurant);
+                           }
+                       }
+
+                   }
+               }
+
+           }
+
+
         }
 
         listView.setAdapter(new RestaurantsListAdapter(context, R.layout.restaurant_list_item, resultRestaurant, currentLocation));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                RestaurantFragment restaurantFragment = new RestaurantFragment();
+
+                ((MainActivity) getActivity()).showRestaurantFragment(restaurantFragment, resultRestaurant.get(position).getIdRestaurant());
+
+            }
+        });
 
     }
     private void prepareGeolocation() {

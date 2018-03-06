@@ -111,41 +111,7 @@ public class RestaurantFragment extends Fragment {
     }
 
 
-    private void prepareMap() {
 
-        if (Tools.checkIfMapsIsOk(getActivity())) {
-
-            new AsyncTask<Void, Void, GoogleMap>() {
-
-                protected GoogleMap doInBackground(Void... params) {
-                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                    MapFragment fragment = new MapFragment();
-                    fragmentTransaction.add(R.id.mapView, fragment);
-                    fragmentTransaction.commit();
-
-                    return null;
-                }
-
-                protected void onPostExecute(GoogleMap map) {
-                    MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.mapView);
-                    map = mapFragment.getMap();
-                    map.getUiSettings().setAllGesturesEnabled(false);
-                    CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(restaurant.getLatitude(), restaurant.getLongitude()));
-                    CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
-                    map.moveCamera(center);
-                    map.animateCamera(zoom);
-
-                    MarkerOptions marker = new MarkerOptions();
-                    marker.position(new LatLng(restaurant.getLatitude(), restaurant.getLongitude()));
-
-                    map.addMarker(marker);
-                }
-
-            }.execute();
-        } else {
-            fragmentView.findViewById(R.id.mapView).setVisibility(View.GONE);
-        }
-    }
 
     private void loadRestaurantFromDataBase(long id) {
       Realm realm = Realm.getInstance(context);
@@ -181,19 +147,20 @@ public class RestaurantFragment extends Fragment {
         restaurantName.setSelected(true);
         restaurantAddresse.setText(restaurant.getAdrRestaurant());
         restaurantPhone.setText(restaurant.getPhoneRestaurant());
-
+        platsGrid.setOrientation(GridLayout.VERTICAL);
         for(final Plat plat : restaurant.getPlats())
         {
             final TextView textPlat = new TextView(context);
             textPlat.setText(plat.getNomPlat());
             textPlat.setTextSize(28);
+
             textPlat.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View view) {
                     String s = "";
                     for (Ingredient ingredient : plat.getIngredients()) {
-                        s += ingredient.getNom() + "\n";
+                        s += ingredient.getNom()+" - " ;
                     }
                     Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
                 }
@@ -202,7 +169,7 @@ public class RestaurantFragment extends Fragment {
                 platsGrid.addView(textPlat);
         }
 
-        this.prepareMap();
+
     }
 
 

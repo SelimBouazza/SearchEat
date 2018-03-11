@@ -46,7 +46,7 @@
                     android:hint="name"
                     android:layout_weight="1"
                     android:singleLine="true"
-
+                    android:textColor="@android:color/black"
                     android:textSize="16dp" />
 
                 <EditText
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:hint="surname"
-
+                    android:textColor="@android:color/black"
                     android:ems="10"
                     android:id="@+id/textSurname"
 
@@ -70,10 +70,10 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:hint="username"
-
+                    android:textColor="@android:color/black"
                     android:ems="10"
                     android:id="@+id/textLogin"
-                    android:textColor="@android:color/white"
+
                     android:layout_weight="1"
                     android:singleLine="true"
                     android:textSize="16dp" />
@@ -87,7 +87,7 @@
                     android:inputType="textPassword"
                     android:ems="10"
                     android:id="@+id/textPwd"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"
                     android:singleLine="true"
                     android:textSize="16dp" />
@@ -97,7 +97,7 @@
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:hint="confirm password"
-
+                    android:textColor="@android:color/black"
                     android:inputType="textPassword"
                     android:ems="10"
                     android:id="@+id/textConfirmPwd"
@@ -110,29 +110,16 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:hint="maik"
-
+                    android:hint="mail"
                     android:inputType="textEmailAddress"
                     android:ems="10"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"
-
                     android:id="@+id/textMail"
                     android:singleLine="true"
                     android:textSize="16dp" />
 
-                <EditText
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="320dp"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:hint="City"
 
-                    android:ems="10"
-                    android:layout_weight="1"
-
-                    android:id="@+id/textCity"
-                    android:singleLine="true"
-                    android:textSize="16dp" />
 
 
             </LinearLayout>

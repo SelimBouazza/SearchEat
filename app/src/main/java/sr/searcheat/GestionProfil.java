@@ -43,4 +43,41 @@ public class GestionProfil extends GestionManager {
         return super.getGson().fromJson(json, listType);
     }
 
+    public Profil getAuth(String login, String password) throws Exception {
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("login", login));
+        nameValuePairs.add(new BasicNameValuePair("mdp", password));
+
+        String profil = super.postDataWithResponse(super.getUrlBase() + "auth.php", nameValuePairs, Global.MethodHTML.POST);
+
+
+        if (profil != null && !profil.isEmpty()) {
+
+            List<Profil> profils = super.getGson().fromJson(profil,listType);
+            return  profils.get(0);
+        }
+
+        return null;
+    }
+
+    public static void addProfilToSharedPref(Context context, Profil profil) {
+        SharedPreferences sharedPref = context.getSharedPreferences(Global.SP_GROUP_PROFIL, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        String json = new Gson().toJson(profil, Profil.class);
+        editor.putString(Global.SP_PROFIL, json);
+        editor.commit();
+    }
+
+
+
+    public String postProfil(Profil profil) throws Exception {
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("login", profil.getLogin()));
+        nameValuePairs.add(new BasicNameValuePair("mdp", profil.getMdp()));
+        nameValuePairs.add(new BasicNameValuePair("first_name", profil.getFirstName()));
+        nameValuePairs.add(new BasicNameValuePair("surname", profil.getSurname()));
+        nameValuePairs.add(new BasicNameValuePair("email", profil.getEmail()));
+       return  super.postDataWithResponse(super.getUrlBase() + "registration.php", nameValuePairs, Global.MethodHTML.POST);
+    }
+
 }

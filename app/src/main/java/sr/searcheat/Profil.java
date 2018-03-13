@@ -27,7 +27,7 @@ public class Profil extends RealmObject{
 
     private String email;
 
-    private boolean actived;
+
 
     public Profil(){
 
@@ -35,7 +35,6 @@ public class Profil extends RealmObject{
 
     public Profil(long id, boolean actived, String email, String surname, String country, String firstName, String mdp, String login) {
         this.id = id;
-        this.actived = actived;
         this.email = email;
         this.surname = surname;
         this.firstName = firstName;
@@ -51,13 +50,7 @@ public class Profil extends RealmObject{
         this.id = id;
     }
 
-    public boolean isActived() {
-        return actived;
-    }
 
-    public void setActived(boolean actived) {
-        this.actived = actived;
-    }
 
     public String getEmail() {
         return email;

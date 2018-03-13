@@ -2,6 +2,7 @@ package sr.searcheat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 /**
  * Created by Sélim on 14/01/2018.
@@ -45,12 +48,14 @@ public class LogInActivity extends ActionBarActivity{
             @Override
             public void onClick(View v) {
 
-                new AsyncTask<Void, Void, Profil>() {
+                new  AsyncTask<Void, Void, Profil>() {
 
                     protected Profil doInBackground(Void... params) {
                         Profil profil = null;
                         try {
                             profil = GestionProfil.getInstance().getAuth(logInTextUsername.getText().toString(), logInTextPassword.getText().toString());
+
+
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -62,9 +67,12 @@ public class LogInActivity extends ActionBarActivity{
                     protected void onPostExecute(Profil profil) {
                         if (profil != null) {
 
-                         //       GestionProfil.addProfilToSharedPref(getApplicationContext(), profil);
-
-                                Toast.makeText(context,"Connexion reussis", Toast.LENGTH_SHORT).show();
+                            try {
+                                GestionProfil.getInstance().addProfilToSharedPref(context,profil);
+                            } catch (InstantiationException e) {
+                                e.printStackTrace();
+                            }
+                            Toast.makeText(context,"Connexion reussi", Toast.LENGTH_SHORT).show();
 
                                 LogInActivity.this.finish();
 

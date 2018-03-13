@@ -9,6 +9,8 @@ import com.google.gson.reflect.TypeToken;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -53,19 +55,37 @@ public class GestionProfil extends GestionManager {
 
         if (profil != null && !profil.isEmpty()) {
 
-            List<Profil> profils = super.getGson().fromJson(profil,listType);
-            return  profils.get(0);
-        }
 
+            List<Profil> profils = super.getGson().fromJson(profil, listType);
+            return profils.get(0);
+        }
         return null;
     }
 
-    public static void addProfilToSharedPref(Context context, Profil profil) {
-        SharedPreferences sharedPref = context.getSharedPreferences(Global.SP_GROUP_PROFIL, Context.MODE_PRIVATE);
+    public  void addProfilToSharedPref(Context context, Profil profil)  {
+        SharedPreferences sharedPref = context.getSharedPreferences(Global.SP_PROFIL, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        String json = new Gson().toJson(profil, Profil.class);
-        editor.putString(Global.SP_PROFIL, json);
+        String json = super.getGson().toJson(profil,Profil.class);
+        editor.putString(Global.SP_PROFIL,json);
         editor.commit();
+    }
+
+    public static void removeProfilFromSharedPref(Context context) {
+        SharedPreferences sharedPref = context.getSharedPreferences(Global.SP_PROFIL, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.remove(Global.SP_PROFIL);
+        editor.commit();
+    }
+
+    public  Profil getProfilFromSharedPref(Context context) {
+        SharedPreferences sharedPref = context.getSharedPreferences(Global.SP_PROFIL, Context.MODE_PRIVATE);
+        String value = sharedPref.getString(Global.SP_PROFIL, "");
+        if(value.equals("")) {
+            return null;
+        }
+        else {
+            return super.getGson().fromJson(value, Profil.class);
+        }
     }
 
 

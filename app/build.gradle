@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.0"
+
+
+    defaultConfig {
+        applicationId "sr.searcheat"
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 3
+        versionName "1.0.2b"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'io.realm:realm-android:0.80.0'
+    compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
+    compile 'com.android.support:support-v4:22.0.0'
+    compile 'com.google.zxing:core:3.2.0'
+    compile 'com.google.android.gms:play-services:7.0.0'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+    compile 'com.appyvet:materialrangebar:1'
+
+
+
+}

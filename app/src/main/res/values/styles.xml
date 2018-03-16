@@ -1,0 +1,32 @@
+<resources>
+
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="colorAccent">#356942</item>
+    </style>
+
+    <style name="AppActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
+
+    <style name="ListRestaurantPair">
+        <item name="android:background">#356942</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="ListRestaurantImpair">
+        <item name="android:background">#356942</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="ScrollableTextView">
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:scrollHorizontally">true</item>
+    </style>
+
+
+</resources>

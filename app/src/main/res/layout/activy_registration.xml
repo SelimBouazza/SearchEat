@@ -1,0 +1,157 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".RegistrationActivity"
+    android:weightSum="1">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/bottomBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="SearchEat"
+                android:id="@+id/textView"
+                android:padding="34dp"
+                android:layout_gravity="center_horizontal" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/textName"
+                    android:layout_gravity="center_horizontal"
+                    android:autoText="false"
+                    android:hint="name"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="surname"
+                    android:textColor="@android:color/black"
+                    android:ems="10"
+                    android:id="@+id/textSurname"
+
+                    android:autoText="false"
+                    android:textSize="16dp"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:layout_gravity="center_horizontal" />
+
+                <EditText
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="username"
+                    android:textColor="@android:color/black"
+                    android:ems="10"
+                    android:id="@+id/textLogin"
+
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:hint="password"
+
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/textPwd"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:hint="confirm password"
+                    android:textColor="@android:color/black"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/textConfirmPwd"
+
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:hint="mail"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="1"
+                    android:id="@+id/textMail"
+                    android:singleLine="true"
+                    android:textSize="16dp" />
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:id="@+id/bottomBar">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Confirm"
+            android:textStyle="bold"
+            android:id="@+id/buttonValid"
+
+
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:clickable="true" />
+
+    </LinearLayout>
+
+</RelativeLayout>

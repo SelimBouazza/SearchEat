@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SearchEat</string>
+    <string name="errorForm">Tous les champs ne sont pas remplis</string>
+    <string name="errorMdp">8 caractère Minimum avec une lettre et un chiffre</string>
+    <string name="errormMail">Mail invalide</string>
+    <string name="errorPwdConfirm">Les mots de passes ne correspondent pas</string>
+</resources>

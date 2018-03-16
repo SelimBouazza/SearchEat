@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    tools:context=".SearchFragment"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/searchEditText"
+            android:hint="Restaurant/City/Pays"
+            android:inputType="textCapSentences"
+            android:singleLine="true"
+            android:textColorHint="@android:color/darker_gray"
+            android:imeOptions="actionSearch"
+            android:layout_weight="0.20" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageSearchTop"
+            android:src="@drawable/ic_recherche_recherche"
+            android:clickable="true"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter" />
+
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:columnCount="3"
+        android:rowCount="1">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Viande"
+            android:id="@+id/textView6"
+            android:paddingRight="20dp"
+            android:layout_row="0"
+            android:layout_column="0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Legumes"
+            android:paddingRight="20dp"
+            android:id="@+id/textView7"
+            android:layout_row="0"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Autres"
+            android:id="@+id/textView8"
+            android:layout_row="0"
+            android:layout_column="2" />
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/listIngredient"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:columnCount="4"
+        android:rowCount="3">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lardons"
+            android:tag="lardons"
+            android:id="@+id/checkBox"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salade"
+            android:tag="salade"
+            android:id="@+id/checkBox3"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pain"
+            android:tag="pain"
+            android:id="@+id/checkBox5"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Steack Haché"
+            android:tag="steackHache"
+            android:id="@+id/checkBox2"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tomates"
+            android:tag="tomates"
+            android:id="@+id/checkBox4"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crème"
+            android:tag="creme"
+            android:id="@+id/checkBox6"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:checked="false" />
+
+    </GridLayout>
+
+
+</LinearLayout>

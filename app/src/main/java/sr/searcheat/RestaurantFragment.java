@@ -47,7 +47,7 @@ import static android.view.View.VISIBLE;
 /**
  * Created by Sélim on 14/01/2018.
  */
-public class RestaurantFragment extends Fragment {
+public class RestaurantFragment extends Fragment { //Page détails du restaurant
 
     private View fragmentView;
     private Context context;
@@ -55,9 +55,7 @@ public class RestaurantFragment extends Fragment {
     private TextView restaurantName;
     private TextView restaurantPhone;
     private Restaurant restaurant;
-    private float heightPaddingTop = 0;
     private ImageView imageGps;
-    private View swipePager;
     private GridLayout platsGrid;
     private CheckBox favorites;
     private Profil profil=null;
@@ -73,18 +71,15 @@ public class RestaurantFragment extends Fragment {
         restaurantPhone=(TextView)fragmentView.findViewById(R.id.restaurantPhone);
         restaurantName=(TextView)fragmentView.findViewById(R.id.restaurantName);
         imageGps = (ImageView) fragmentView.findViewById(R.id.imageGps);
-      // swipePager = fragmentView.findViewById(R.id.swipePager);
         platsGrid = (GridLayout)fragmentView.findViewById(R.id.platsGrid);
         favorites = (CheckBox)fragmentView.findViewById(R.id.fav);
 
         SharedPreferences sharedPref = context.getSharedPreferences(Global.SP_FAV, Context.MODE_PRIVATE);
         Set<String> restoIds = sharedPref.getStringSet(Global.SP_FAV, new HashSet<String>());
 
-
-
         this.prepareView();
         Bundle bundle = this.getArguments();
-        if (bundle != null) {
+        if (bundle != null) {                   //Récupération du restaurant en question
             long id = bundle.getLong("id", 0);
 
             if (id != 0) {
@@ -105,14 +100,13 @@ public class RestaurantFragment extends Fragment {
         } catch (java.lang.InstantiationException e) {
             e.printStackTrace();
         }
-        //  Log.i("piiii",profil.getLogin());
         if (profil == null ) {
            favorites.setEnabled(false);
         }
         favorites.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
                                                  @Override
-                                                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                                                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) { //Gestion des favoris
                                                      if (favorites.isChecked()) {
                                                          try {
                                                              GestionRestaurant.getInstance().addRestoFav(context,restaurant);
@@ -162,7 +156,7 @@ public class RestaurantFragment extends Fragment {
             }
         });
 
-        this.prepareScrollView();
+
     }
 
 
@@ -180,23 +174,8 @@ public class RestaurantFragment extends Fragment {
     }
 
 
-    private void prepareScrollView() {
-        Rect windowRect = new Rect();
-        fragmentView.getWindowVisibleDisplayFrame(windowRect);
 
-        float totalHeight = (windowRect.bottom - windowRect.top);
-
-        View bottomBloc = fragmentView.findViewById(R.id.bottomBloc);
-
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
-        bottomBloc.measure(display.getWidth(), display.getHeight());
-
-        heightPaddingTop = (totalHeight - bottomBloc.getMeasuredHeight());
-
-//        swipePager.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) heightPaddingTop));
-    }
-
-    private void setData() {
+    private void setData() { //Ajout de toute les informations necessaire dans le fragment
         getActivity().setTitle(restaurant.getNomRestaurant());
         restaurantName.setText(restaurant.getNomRestaurant());
         restaurantName.setSelected(true);
@@ -214,8 +193,13 @@ public class RestaurantFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     String s = "";
+                    int i =0;
                     for (Ingredient ingredient : plat.getIngredients()) {
-                        s += ingredient.getNom()+" - " ;
+                        i++;
+                        s += ingredient.getNom();
+                        if(i<plat.getIngredients().size())
+                            s+=" - ";
+
                     }
                     Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
                 }

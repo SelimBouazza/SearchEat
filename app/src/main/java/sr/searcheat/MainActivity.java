@@ -32,16 +32,13 @@ public class MainActivity extends ActionBarActivity{
     private Toolbar toolbar;
     private android.view.Menu menu;
 
-    private Boolean isInternetConnected = false;
 
-    private Profil profil = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        isInternetConnected = Tools.isInternetConnected(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -51,7 +48,6 @@ public class MainActivity extends ActionBarActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        this.initDrawerLayout();
 
         String action = getIntent().getStringExtra("action");
 
@@ -77,40 +73,11 @@ public class MainActivity extends ActionBarActivity{
 
     @Override
     protected void onResume() {
-        isInternetConnected = Tools.isInternetConnected(this);
-
 
         super.onResume();
     }
 
-    private void initDrawerLayout() {
-        menuItems = getResources().getStringArray(R.array.drawerMenu);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerList = (ListView) findViewById(R.id.left_drawer);
-
-    // drawerList.setAdapter(new DrawerAdapter(this, R.layout.drawer_list_item, Arrays.asList(menuItems)));
-
-    //    drawerList.setOnItemClickListener(new DrawerItemClickListener());
-
-        drawerToggle = new ActionBarDrawerToggle(
-                this, drawerLayout,
-                toolbar,
-                R.string.app_name,
-                R.string.app_name) {
-
-
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-            }
-
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-            }
-        };
-
-        drawerLayout.setDrawerListener(drawerToggle);
-    }
 
     public void showSearchResult(@NonNull ResultSearchFragment fragment, @NonNull String search,ArrayList<String> listIngredient) {
 
@@ -214,29 +181,5 @@ public class MainActivity extends ActionBarActivity{
         }
     }
 
-    public void setVisibilityMenu(final Boolean search, final Boolean resto, final Boolean share) {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-
-                if (MainActivity.this.menu == null) {
-                    while (MainActivity.this.menu == null) {
-                    }
-                }
-
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-
-                MainActivity.this.menu.getItem(0).setVisible(search); // Search
-                MainActivity.this.menu.getItem(1).setVisible(resto); // Favorites
-                MainActivity.this.menu.getItem(2).setVisible(share); // Share
-
-                super.onPostExecute(aVoid);
-            }
-        }.execute();
-    }
 
 }

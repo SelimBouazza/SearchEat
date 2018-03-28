@@ -25,7 +25,7 @@ import java.util.Set;
 /**
  * Created by Sélim on 14/01/2018.
  */
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment { //Page de recherche
 
     private View fragmentView;
     private Context context;
@@ -82,7 +82,6 @@ public class SearchFragment extends Fragment {
 
     @Override
     public void onResume() {
-        ((MainActivity) getActivity()).setVisibilityMenu(false, false, false);
         for (int i = 0; i < listIngredient.getChildCount(); i++) {
 
             final CheckBox child = (CheckBox) listIngredient.getChildAt(i);

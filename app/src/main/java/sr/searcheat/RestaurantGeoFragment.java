@@ -17,6 +17,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,8 @@ import io.realm.RealmQuery;
 /**
  * Created by Sélim on 26/01/2018.
  */
-public class RestaurantGeoFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, LocationListener {
+public class RestaurantGeoFragment extends Fragment implements LocationListener {
+    //Page des restaurants les plus proches
 
     private View fragmentView;
     private Context context;
@@ -43,7 +45,6 @@ public class RestaurantGeoFragment extends Fragment implements SwipeRefreshLayou
     private Location currentLocation;
     private LocationManager locationManager;
 
-    private SwipeRefreshLayout swipeLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,8 +60,8 @@ public class RestaurantGeoFragment extends Fragment implements SwipeRefreshLayou
 
         listView = (ListView) fragmentView.findViewById(R.id.listResto);
 
-        swipeLayout = (SwipeRefreshLayout) fragmentView.findViewById(R.id.swipe_container);
-        swipeLayout.setOnRefreshListener(this);
+        /*swipeLayout = (SwipeRefreshLayout) fragmentView.findViewById(R.id.swipe_container);
+        swipeLayout.setOnRefreshListener(this);*/
         prepareGeolocation();
         loadrestaurants();
 
@@ -75,50 +76,23 @@ public class RestaurantGeoFragment extends Fragment implements SwipeRefreshLayou
     @Override
     public void onResume() {
         getActivity().setTitle("Restaurant a proximité");
-        ((MainActivity) getActivity()).setVisibilityMenu(true, false, false);
-
-
-
         super.onResume();
     }
 
-    @Override
-    public void onRefresh() {
 
-    }
 
-    @Override
-    public void onLocationChanged(Location location) {
+    private void loadrestaurants()  { //Chargment des restaurants
 
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-
-    }
-
-    private void loadrestaurants()  {
-
-        restaurants = new ArrayList<>();
         Realm realm = Realm.getInstance(context);
         int radius = Global.DEFAULT_RADIUS;
         RealmQuery<Restaurant> query = realm.where(Restaurant.class);
 
 
+
         GeoTools geoTools = new GeoTools(currentLocation.getLatitude(), currentLocation.getLongitude(), radius);
         for (Restaurant restaurant : query.findAll()) {
 
-
+                Log.i("caaaa",String.valueOf(restaurant.getLongitude()));
             if (geoTools.pointIsInRadius(restaurant.getLatitude(),restaurant.getLongitude())) {
 
                 restaurants.add(restaurant);
@@ -138,15 +112,15 @@ public class RestaurantGeoFragment extends Fragment implements SwipeRefreshLayou
             }
         });
 
-        if (swipeLayout.isRefreshing())
-            swipeLayout.setRefreshing(false);
+      /*  if (swipeLayout.isRefreshing())
+            swipeLayout.setRefreshing(false);*/
     }
 
     private void prepareGeolocation() {
         currentLocation = getLastKnownLocation();
     }
 
-    private Location getLastKnownLocation() {
+    private Location getLastKnownLocation() { //Fonctions qui retourne la position connu la plus récente
         locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
         List<String> providers = locationManager.getProviders(true);
         Location bestLocation = null;
@@ -164,5 +138,23 @@ public class RestaurantGeoFragment extends Fragment implements SwipeRefreshLayou
     }
 
 
+    @Override
+    public void onLocationChanged(Location location) {
 
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
+    }
 }

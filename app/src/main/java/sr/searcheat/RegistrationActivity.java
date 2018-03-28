@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 /**
  * Created by Sélim on 14/01/2018.
  */
-public class RegistrationActivity extends Activity {
+public class RegistrationActivity extends Activity { //Page de l'inscription
 
     private EditText textName;
     private EditText textSurname;
@@ -63,7 +63,7 @@ public class RegistrationActivity extends Activity {
         });
     }
 
-    public  void verificationOfProfilForPostOrPut(Profil profil) {
+    public  void verificationOfProfilForPostOrPut(Profil profil) { //Ici on vérifie que les données sont bien au normes
 
         if (profil.getLogin().equals("") ||  // if Form OK
                 profil.getMdp().equals("") ||
@@ -101,7 +101,7 @@ public class RegistrationActivity extends Activity {
         return profil;
     }
 
-    private void postNewProfil(final Profil profil) {
+    private void postNewProfil(final Profil profil) { //On envoie le profil dans la BDD
         new AsyncTask<Profil, Void, Profil>() {
 
 
@@ -123,7 +123,7 @@ public class RegistrationActivity extends Activity {
 
 
                     if(profil != null) {
-                     //   GestionProfil.addProfilToSharedPref(getApplicationContext(), profil);
+
                         Toast.makeText(getApplicationContext(),"Inscription Reussi",Toast.LENGTH_SHORT).show();
                         RegistrationActivity.this.finish();
                     }

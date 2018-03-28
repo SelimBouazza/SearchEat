@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +21,11 @@ import io.realm.Realm;
  * Created by Sélim on 21/01/2018.
  */
 public class FavorisFragment extends Fragment {
+
     private View fragmentView;
     private Context context;
     private ListView listView;
     private List<Restaurant> restaurants;
-
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +54,7 @@ public class FavorisFragment extends Fragment {
     }
 
 
-    public void loadFavoritesRestaurant() {
-
-
+    public void loadFavoritesRestaurant() { //Chargment des favoris présent dans le cache dans la listeView
 
         SharedPreferences sharedPref = context.getSharedPreferences(Global.SP_FAV, Context.MODE_PRIVATE);
         Set<String> restoIds = sharedPref.getStringSet(Global.SP_FAV, new HashSet<String>());

@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 /**
  * Created by Sélim on 14/01/2018.
  */
-public class LogInActivity extends ActionBarActivity{
+public class LogInActivity extends ActionBarActivity{ //Page de connexion
 
     private EditText logInTextUsername;
     private EditText logInTextPassword;
@@ -50,7 +50,7 @@ public class LogInActivity extends ActionBarActivity{
             @Override
             public void onClick(View v) {
 
-                 new AsyncTask<Void, Void, Profil>() {
+                 new AsyncTask<Void, Void, Profil>() {          //Vérification des bons ids
 
                     protected Profil doInBackground(Void... params) {
                         Profil profil = null;
@@ -83,7 +83,7 @@ public class LogInActivity extends ActionBarActivity{
 
                             logInTextPassword.setText("");
                         }
-                       // super.onPostExecute(profil);
+
                     }
                 }.execute();
 

@@ -27,7 +27,7 @@ import io.realm.RealmList;
 /**
  * Created by Sélim on 18/02/2018.
  */
-public class GestionRestaurant extends GestionManager {
+public class GestionRestaurant extends GestionManager {//Ici c'est tout ce qui concerne la connexion BDD pour les données restaurants
 
     private final static GestionRestaurant instance = new GestionRestaurant();
 

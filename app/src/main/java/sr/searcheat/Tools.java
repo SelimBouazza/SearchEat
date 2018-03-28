@@ -18,6 +18,8 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
  */
 public class Tools {
 
+    //Outils pour le fragment restaurant
+
     public static boolean isInternetConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -26,16 +28,6 @@ public class Tools {
             return true;
         }
         return false;
-    }
-
-    public static boolean checkIfMapsIsOk(Activity context) {
-        int checkGooglePlayServices = GooglePlayServicesUtil.isGooglePlayServicesAvailable(context);
-        if (checkGooglePlayServices != ConnectionResult.SUCCESS) {
-            GooglePlayServicesUtil.getErrorDialog(checkGooglePlayServices, context, 1122).show();
-            return false;
-        } else {
-            return true;
-        }
     }
 
     public static void callNumber(String number, Context context) {

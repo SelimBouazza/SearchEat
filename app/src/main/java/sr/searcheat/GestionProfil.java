@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 /**
  * Created by Sélim on 03/03/2018.
  */
-public class GestionProfil extends GestionManager {
+public class GestionProfil extends GestionManager { //Ici c'est tout ce qui concerne la connexion BDD pour les données utilisateurs
 
     private final static GestionProfil instance = new GestionProfil();
 

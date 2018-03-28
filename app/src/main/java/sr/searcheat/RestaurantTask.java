@@ -25,7 +25,7 @@ public static class LoaderServerRestaurantTask   extends AsyncTask<Void, Restaur
 
     private SharedPreferences prefs;
 
-
+    //Récupération de toute les données de la BDD
 
 
     public LoaderServerRestaurantTask (SplashActivity splashActivity) {
@@ -80,8 +80,8 @@ public static class LoaderServerRestaurantTask   extends AsyncTask<Void, Restaur
 
                     if (restaurants != null && restaurants.size() != 0) {
                         for (Restaurant restaurant : restaurants) {
-                            GeoTools.Position p = new GeoTools.Position();
-                            p= GeoTools.getLocationPosition(context, restaurant.getAdrRestaurant());
+                            //GeoTools.Position p = new GeoTools.Position();
+                            GeoTools.Position p= GeoTools.getLocationPosition(context, restaurant.getAdrRestaurant());
                             restaurant.setLatitude(p.latitude);
                             restaurant.setLongitude(p.longitude);
 
@@ -115,7 +115,7 @@ public static class LoaderServerRestaurantTask   extends AsyncTask<Void, Restaur
 
 
                 } catch (Exception e) {
-                    Log.i("caca","ca");
+                  Log.i("caaaa",e.getMessage());
                     e.printStackTrace();
         }
         return restaurants;

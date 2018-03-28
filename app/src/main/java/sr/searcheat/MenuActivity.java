@@ -25,7 +25,7 @@ import static android.view.View.VISIBLE;
 /**
  * Created by Sélim on 14/01/2018.
  */
-public class MenuActivity extends ActionBarActivity {
+public class MenuActivity extends ActionBarActivity {  //Page du Menu
 
     private Profil profil;
     private TextView textLoginUser;
@@ -56,7 +56,6 @@ public class MenuActivity extends ActionBarActivity {
            } catch (InstantiationException e) {
                e.printStackTrace();
            }
-         //  Log.i("piiii",profil.getLogin());
             if (profil != null && profil.getLogin() != "") {
                 textLoginUser.setText(profil.getLogin());
                 deconnexion.setVisibility(VISIBLE);
@@ -70,7 +69,7 @@ public class MenuActivity extends ActionBarActivity {
         super.onResume();
     }
 
-    public void changePage(View view) {
+    public void changePage(View view) { //Lien vers les bonnes pages
 
         String tag = (String) view.getTag();
 
@@ -80,8 +79,6 @@ public class MenuActivity extends ActionBarActivity {
             if (isInternetConnected) {
                 if (profil == null) {
                     i = new Intent(MenuActivity.this, LogInActivity.class);
-                } else {
-                    i = new Intent(MenuActivity.this, UserActivity.class);
                 }
             }else{
                 Toast.makeText(this,"Internet required", Toast.LENGTH_LONG).show();

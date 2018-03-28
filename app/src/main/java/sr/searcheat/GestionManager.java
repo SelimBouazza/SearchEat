@@ -47,7 +47,7 @@ import io.realm.RealmObject;
 /**
  * Created by Sélim on 18/02/2018.
  */
-public class GestionManager {
+public class GestionManager { //Ici nous avons le manager de la connexion à la base de donnée
 
     private Gson gson;
 
@@ -97,29 +97,6 @@ public class GestionManager {
         return urlBase;
     }
 
-    protected int postData(String url, List<NameValuePair> nameValuePairs, Global.MethodHTML methodHTML) throws IOException {
-        HttpClient httpclient = new DefaultHttpClient();
-
-        if (methodHTML == Global.MethodHTML.POST) {
-            HttpPostHC4 http = new HttpPostHC4(url);
-            http.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
-            httpclient.execute(http);
-            HttpResponse response = httpclient.execute(http);
-            return response.getStatusLine().getStatusCode();
-        } else if (methodHTML == Global.MethodHTML.PUT) {
-            HttpPutHC4 http = new HttpPutHC4(url);
-            http.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
-            httpclient.execute(http);
-            HttpResponse response = httpclient.execute(http);
-            return response.getStatusLine().getStatusCode();
-        } else if (methodHTML == Global.MethodHTML.DELETE) {
-            HttpDeleteHC4 http = new HttpDeleteHC4(url);
-            httpclient.execute(http);
-            HttpResponse response = httpclient.execute(http);
-            return response.getStatusLine().getStatusCode();
-        }
-        return 0;
-    }
 
     protected String postDataWithResponse(String url, List<NameValuePair> nameValuePairs, Global.MethodHTML methodHTML) throws IOException {
         HttpClient httpclient = new DefaultHttpClient();
@@ -150,11 +127,5 @@ public class GestionManager {
         return gson;
     }
 
-    public static String getLanguage() {
-        return language;
-    }
 
-    public static void setLanguage(String language) {
-        GestionManager.language = language;
-    }
 }

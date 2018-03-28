@@ -22,6 +22,7 @@ import java.util.List;
  */
 public class RestaurantsListAdapter extends ArrayAdapter<Restaurant> {
 
+    //Adapter personnalisé pour la liste des restaurants
     private List<Restaurant> items;
     private int resource;
     private Context context;

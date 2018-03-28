@@ -128,13 +128,16 @@ class GeoTools {
     public static Position getLocationPosition(Context context, String address) throws IOException, JSONException {
         Geocoder geocoder = new Geocoder(context);
         List<Address> addresses;
+
         addresses = geocoder.getFromLocationName(address, 1);
+
         Position position = null;
         if(addresses.size() > 0) {
             position = new Position();
 
             position.latitude= addresses.get(0).getLatitude();
             position.longitude= addresses.get(0).getLongitude();
+
         }
 
         return position;

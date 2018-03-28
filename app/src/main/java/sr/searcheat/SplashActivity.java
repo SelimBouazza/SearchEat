@@ -15,7 +15,7 @@ import android.widget.Toast;
  */
 public class SplashActivity extends ActionBarActivity {
 
-
+//Page de chargment visuel de la BDD
 
     // OVERRIDE
 

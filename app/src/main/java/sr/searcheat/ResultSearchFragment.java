@@ -27,22 +27,14 @@ import io.realm.RealmQuery;
  * Created by Sélim on 04/02/2018.
  */
 public class ResultSearchFragment extends Fragment {
+//Page de resultats des restaurants et ingredients choisie
 
-    private GeoTools.Position position;
     private View fragmentView;
     private ListView listView;
-    private List<Restaurant> restaurants = new ArrayList<>();
-    private SwipeRefreshLayout swipeLayout;
     private Context context;
     private List<Restaurant> restoList;
     private String searchRequest;
     private ArrayList<Restaurant> resultRestaurant = new ArrayList<>();
-    private int idRestaurantMax = 0 ;
-    private int nbRestaurant = 0;
-    private boolean allRestaurantDisplay =false;
-    private boolean showDistance = false;
-    private boolean locationFound = false;
-    private Set<String> searchPlats;
     private ArrayList<String> searchIngredient;
     private Location currentLocation;
     private LocationManager locationManager;
@@ -67,8 +59,6 @@ public class ResultSearchFragment extends Fragment {
 
         listView = (ListView) fragmentView.findViewById(R.id.listResto);
 
-        swipeLayout = (SwipeRefreshLayout) fragmentView.findViewById(R.id.swipe_container);
-        swipeLayout.setEnabled(false);
 
         prepareGeolocation();
 
@@ -105,7 +95,7 @@ public class ResultSearchFragment extends Fragment {
                     resultRestaurant.add(restaurant);
                 }
             }
-           if(!searchIngredient.isEmpty())
+         if(!searchIngredient.isEmpty())
            {
 
                for(int j=0;j<listPlats.size();j++)
@@ -167,20 +157,12 @@ public class ResultSearchFragment extends Fragment {
     @Override
     public void onResume() {
         getActivity().setTitle("Resultats de la recherche");
-        ((MainActivity) getActivity()).setVisibilityMenu(false, false, false);
 
         if (restoList.isEmpty()) {
             Toast.makeText(context, "Aucun restaurant trouvée", Toast.LENGTH_SHORT).show();
         }
         super.onResume();
     }
-
-
-
-
-
-
-
 
 
     public void setSearchRequest(String s)

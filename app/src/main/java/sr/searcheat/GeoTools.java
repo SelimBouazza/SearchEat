@@ -127,9 +127,9 @@ class GeoTools {
 
     public static Position getLocationPosition(Context context, String address) throws IOException, JSONException {
         Geocoder geocoder = new Geocoder(context);
-        List<Address> addresses;
 
-        addresses = geocoder.getFromLocationName(address, 1);
+
+        List<Address>addresses = geocoder.getFromLocationName(address, 1);
 
         Position position = null;
         if(addresses.size() > 0) {

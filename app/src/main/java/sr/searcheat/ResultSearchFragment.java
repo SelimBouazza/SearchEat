@@ -81,42 +81,76 @@ public class ResultSearchFragment extends Fragment {
         for(Restaurant restaurant : restoList)
         {
             listPlats=restaurant.getPlats();
-            if(!searchRequest.equals(""))
+            if(!searchRequest.equals("")&&!searchIngredient.isEmpty())
             {
-                if(restaurant.getNomRestaurant().contains(searchRequest))
+                if(restaurant.getNomRestaurant().contains(searchRequest)||restaurant.getAdrRestaurant().contains(searchRequest))
                 {
 
-                    resultRestaurant.add(restaurant);
+                    for(int j=0;j<listPlats.size();j++)
+                    {
+
+                        for(int z=0;z<listPlats.get(j).getIngredients().size();z++)
+                        {
+                            for(int i =0; i<searchIngredient.size();i++)
+                            {
+
+                                if(listPlats.get(j).getIngredients().get(z).getNom().contains(searchIngredient.get(i)))
+                                {
+
+                                    resultRestaurant.add(restaurant);
+                                }
+                            }
+
+                        }
+                    }
                 }
 
-                else if(restaurant.getAdrRestaurant().contains(searchRequest))
-                {
 
-                    resultRestaurant.add(restaurant);
+
+            }
+            else
+            {
+
+                if(!searchRequest.equals(""))
+                {
+                    if(restaurant.getNomRestaurant().contains(searchRequest))
+                    {
+
+                        resultRestaurant.add(restaurant);
+                    }
+
+                    else if(restaurant.getAdrRestaurant().contains(searchRequest))
+                    {
+
+                        resultRestaurant.add(restaurant);
+                    }
+                }
+
+                if(!searchIngredient.isEmpty())
+                {
+                    for(int j=0;j<listPlats.size();j++)
+                    {
+
+                        for(int z=0;z<listPlats.get(j).getIngredients().size();z++)
+                        {
+                            for(int i =0; i<searchIngredient.size();i++)
+                            {
+
+                                if(listPlats.get(j).getIngredients().get(z).getNom().contains(searchIngredient.get(i)))
+                                {
+
+                                    resultRestaurant.add(restaurant);
+                                }
+                            }
+
+                        }
+                    }
                 }
             }
-         if(!searchIngredient.isEmpty())
-           {
 
-               for(int j=0;j<listPlats.size();j++)
-               {
 
-                       for(int z=0;z<listPlats.get(j).getIngredients().size();z++)
-                       {
-                           for(int i =0; i<searchIngredient.size();i++)
-                           {
 
-                           if(listPlats.get(j).getIngredients().get(z).getNom().contains(searchIngredient.get(i)))
-                           {
 
-                               resultRestaurant.add(restaurant);
-                           }
-                       }
-
-                   }
-               }
-
-           }
 
 
         }

@@ -6,6 +6,6 @@
     app:theme="@style/AppActionBar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#001C45"
+    android:background="@android:color/darker_gray"
     app:popupTheme="@style/Theme.AppCompat.NoActionBar"
     android:minHeight="?attr/actionBarSize"/>

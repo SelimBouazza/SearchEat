@@ -93,8 +93,10 @@ public static class LoaderServerRestaurantTask   extends AsyncTask<Void, Restaur
                                 {
                                     for(Plat plat : plats)
                                     {
+                                        Log.i("caaaaa1",plat.getNomPlat());
                                         if(ingredient.getId()==ingredientPlat.getId() && ingredientPlat.getId_plat()==plat.getIdPlat() && restaurant.getIdRestaurant()==plat.getIdRestaurant())
                                         {
+
                                             if(!plat.getIngredients().contains(ingredient))
                                             plat.getIngredients().add(ingredient);
                                             if(!restaurant.getPlats().contains(plat))

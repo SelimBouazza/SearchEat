@@ -184,6 +184,7 @@ public class RestaurantFragment extends Fragment { //Page détails du restaurant
         platsGrid.setOrientation(GridLayout.VERTICAL);
         for(final Plat plat : restaurant.getPlats())
         {
+            Log.i("caaaaa",plat.getNomPlat());
             final TextView textPlat = new TextView(context);
             textPlat.setText(plat.getNomPlat());
             textPlat.setTextSize(28);
